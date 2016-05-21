@@ -2,21 +2,26 @@ import React, { Component }         from 'react'
 import { connect }                  from 'react-redux'
 import c3                           from 'c3'
 
+import { receiveDataSet }           from '../actions/actionGraph'
+
 
 export default class Graph extends Component {
 
+  handleChange() {
+    this.props.dispatch(receiveDataSet);
+  }
+
   create() {
-    const dataSet = [100, 1500, 10, 50]
-    console.log(dataSet);
+    
     const chart = c3.generate({
       bindto: '#comparison-graph',
       data: {
         columns: [
-          dataSet[0],
-          dataSet[1],
-          dataSet[2],
-          dataSet[3],
-          dataSet[4]
+          this.props.dataSet[0],
+          this.props.dataSet[1],
+          this.props.dataSet[2],
+          this.props.dataSet[3],
+          this.props.dataSet[4]
         ],
         types: {
           "One": 'bar',
@@ -36,9 +41,25 @@ export default class Graph extends Component {
 
     
 
-    // const { dataSet } = this.props
+    const { dataSet } = this.props
 
-    return <div id="comparison-graph"></div>
+    return <div>
+    { dataSet ?
+      <div id="comparison-graph"></div> : 
+      <div>...Loading</div>
+    }
+    </div>
   }
 
 }
+
+
+function mapStateToProps(state) {
+  const dataSet = state.dataSet;
+
+  return {
+    dataSet
+  };
+}
+
+export default connect(mapStateToProps)(Graph)
