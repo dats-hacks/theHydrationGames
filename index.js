@@ -6,11 +6,11 @@ import combineReducers from './reducers/index'
 import App from './components/App'
 // import Home from './containers/Home'
 
-// let store = createStore(combineReducers);
+let store = createStore(combineReducers);
 
 render (
-  // <Provider store={ store }>
-    <App />,
-  // </Provider>,
+  <Provider store={ store }>
+    <App />
+  </Provider>,
   document.getElementById('app')
 )
