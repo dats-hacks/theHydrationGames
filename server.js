@@ -2,7 +2,7 @@ var express = require('express');
 var request = require('request')
 var path = require('path');
 var httpProxy = require('http-proxy');
-var publicPath = path.resolve(__dirname, 'public');
+var publicPath = path.resolve(__dirname, 'client');
 var User = require("./models/user.js");
 var passport = require("passport");
 
@@ -15,7 +15,7 @@ var proxy = httpProxy.createProxyServer({
   changeOrigin: true
 });
 var app = express();
-app.set("view engine","html");
+app.set("view engine","ejs");
 
 app.use(express.static(publicPath));
 
@@ -66,7 +66,15 @@ app.post("/login", passport.authenticate("local",{
 app.get("/logout", function(req,res){
   req.logout();
   res.redirect("/hello");
-})
+});
+
+/*app.get("/leaderboard", function(req, res){
+  res.render("leaderboard");
+});*/
+
+app.get('/leaderboard', function(req, res){
+  res.sendFile(path.resolve(__dirname, 'leaderboard.html'));
+});
 
 // If you only want this for development, you would of course
 // put it in the "if" block below

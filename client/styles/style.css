@@ -1,0 +1,16 @@
+/*****************************
+  Leaderboard
+******************************/
+.leaderboard-header {
+  text-align: center;
+}
+.schools {
+  text-align: center;
+  padding: 20px;
+  width: 30%;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+}
