@@ -19,7 +19,7 @@ app.set("view engine","html");
 
 app.use(express.static(publicPath));
 
-app.get("/hello", function(req,res){
+app.get("/", function(req,res){
   var link="https://data.smcgov.org/resource/vedt-m26i.json";
   request(link, function(error, response, body){
     if (error) { throw error; }
@@ -28,10 +28,16 @@ app.get("/hello", function(req,res){
       dat["gallonsPerCapita"] = (dat["water_use_ccf"]*748.052)/(dat["service_population"]);
     });
     console.log(data);
-    res.send(data);
+    // res.send(data);
+    res.render("index",{data: data});
   });
   // res.render("landing")
 });
+
+app.get("/leaderboard", function(req,res){
+  res.render("leaderboard");
+});
+
 
 app.get("/register", function(req,res){
   res.render("register");
@@ -46,7 +52,7 @@ app.post("/register", function(req,res){
     }
     else{
       passport.authenticate("local")(req,res, function(){
-        res.redirect("/hello");
+        res.redirect("/home");
       });
     }
   });
@@ -58,14 +64,14 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", passport.authenticate("local",{
-  successRedirect: "/hello",
+  successRedirect: "/home",
   failureRedirect: "/login"
 }), function(req,res){
 });
 
 app.get("/logout", function(req,res){
   req.logout();
-  res.redirect("/hello");
+  res.redirect("/home");
 })
 
 // If you only want this for development, you would of course
