@@ -2,8 +2,18 @@
   Leaderboard
 ******************************/
 .leaderboard-header {
+  margin-top: 60px;
   text-align: center;
 }
+.school-row {
+  margin: 0 auto;
+}
+
+.faucet img {
+  height: 350px;
+  width: 100%;
+}
+
 .schools {
   text-align: center;
   padding: 20px;
@@ -11,8 +21,10 @@
   align-items: center;
 }
 
-li {
+.school-name {
   padding: 30px;
   text-align: left;
   list-style-type: none;
+  font-size: 24px;
 }
+

@@ -6,42 +6,102 @@
 
   <body>
 
+      <div class="navbar navbar-default navbar-fixed-top">
+
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <a href="" class="navbar-brand">The Hydration Games</a>
+
+          <button type="button" class=
+          "navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+
+            <span class="sr-only">Toggle navigation</span>
+
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+
+          </button>
+
+      </div>
+
+      <div class="collapse navbar-collapse">
+
+        <ul class="nav navbar-nav">
+
+          <li><a href="./leaderboard.html">Liter Board</a></li>
+          <li><a href="">The competition</a></li>
+          <li><a href="./tips.html">Conservation Tips</a><li>
+
+        </ul>
+
+        <!-- <form class=" nav navbar-nav navbar-form navbar-right" role="email">
+      
+        <div class="form-group">
+        
+        <input type="email" class="form-control" placeholder="email">
+
+        </div>
+
+        <div class="form-group">
+
+        <input type="password" class="form-control" placeholder="password">
+        
+        </div>
+        
+        <button type="submit" class="btn btn-success">Submit</button> -->
+        
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
   <header class="leaderboard-header">
     <h1>Current Leaders!</h1>
     <h3>These schools are currently the top 3 water savers in San Mateo County</h3>
   </header>  
 
-      <div class="row">
+  <div class="faucet">
+    <img src="./client/images/faucet.jpg">
+  <div>
+
+      <div class="row school-row">
         <div class="col-md-4 schools">
           <h1>Elementary School</h1>
             <ul>
-              <li>First Place: Laurel Elementary</li>
-              <li>Second Place: Selby Lane Elementary</li>
-              <li>Third Place: Fox Elementary</li>
+              <li class="school-name">First Place: Laurel Elementary</li>
+              <li class="school-name">Second Place: Selby Lane Elementary</li>
+              <li class="school-name">Third Place: Fox Elementary</li>
             </ul>
         </div>
         <div class="col-md-4 schools">
           <h1>Middle School</h1>
             <ul>
-              <li>First Place: Thomas R. Pollicita Middle</li>
-              <li>Second Place: Bowditch Middle</li>
-              <li>Third Place: La Entrada Middle</li>
+              <li class="school-name">First Place: Thomas R. Pollicita Middle</li>
+              <li class="school-name">Second Place: Bowditch Middle</li>
+              <li class="school-name">Third Place: La Entrada Middle</li>
             </ul>
         </div>
         <div class="col-md-4 schools">
           <h1>High School</h1>
             <ul>
-              <li>First Place: South San Francisco High</li>
-              <li>Second Place: Woodside High</li>
-              <li>Third Place: Carlmont High</li>
+              <li class="school-name">First Place: South San Francisco High</li>
+              <li class="school-name">Second Place: Woodside High</li>
+              <li class="school-name">Third Place: Carlmont High</li>
             </ul>
         </div>
       </div>
 
 
     <!-- custom javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/core.js"></script>
     <script type="text/javascript" src="./client/app.js"></script>
+    <!-- CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/core.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   </body>
 </html>
