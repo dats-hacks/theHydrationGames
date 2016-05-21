@@ -15,7 +15,7 @@ var proxy = httpProxy.createProxyServer({
   changeOrigin: true
 });
 var app = express();
-app.set("view engine","html");
+// app.set("view engine","html");
 
 app.use(express.static(publicPath));
 
@@ -77,15 +77,15 @@ app.get("/logout", function(req,res){
 // If you only want this for development, you would of course
 // put it in the "if" block below
 
-if (!isProduction) {
-  var bundle = require('./server/compiler.js');
-  bundle();
-  app.all('/build/*', function (req, res) {
-    proxy.web(req, res, {
-      target: 'http://localhost:8080'
-    });
-  });
-}
+// if (!isProduction) {
+//   var bundle = require('./server/compiler.js');
+//   bundle();
+//   app.all('/build/*', function (req, res) {
+//     proxy.web(req, res, {
+//       target: 'http://localhost:8080'
+//     });
+//   });
+// }
 
 proxy.on('error', function(e) {
   console.log('Could not connect to proxy, please try again...');
