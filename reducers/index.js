@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
+import graphDataSet        from './reducerGraph';
 
-
-const combine = combineReducers({
-  
+const rootReducer = combineReducers({
+  graphDataSet
 })
 
-export default combine
+export default rootReducer
