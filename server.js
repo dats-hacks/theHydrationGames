@@ -70,7 +70,7 @@ app.get("/logout", function(req,res){
 
 // If you only want this for development, you would of course
 // put it in the "if" block below
-
+/*
 if (!isProduction) {
   var bundle = require('./server/compiler.js');
   bundle();
@@ -84,6 +84,7 @@ if (!isProduction) {
 proxy.on('error', function(e) {
   console.log('Could not connect to proxy, please try again...');
 });
+*/
 
 app.listen(port, function () {
   console.log('Server running on port ' + port);
