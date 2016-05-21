@@ -20,7 +20,7 @@ export default class NavigationBar extends Component {
         </Nav>
         
         <Nav pullRight>
-          <NavItem eventKey={1} href="#">Sign Up Your School!</NavItem>
+          <NavItem eventKey={1} href="/register">Sign Up Your School!</NavItem>
           <NavItem eventkey={2} href="#">Login</NavItem>
         </Nav>
       </Navbar>
