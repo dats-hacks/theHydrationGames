@@ -22,11 +22,13 @@ app.use(express.static(publicPath));
 app.get("/hello", function(req,res){
   var link="https://data.smcgov.org/resource/vedt-m26i.json";
   request(link, function(error, response, body){
+    if (error) { throw error; }
     data = JSON.parse(body);
     data.forEach(function(dat){
       dat["gallonsPerCapita"] = (dat["water_use_ccf"]*748.052)/(dat["service_population"]);
     });
     console.log(data);
+    res.send(data);
   });
   // res.render("landing")
 });
