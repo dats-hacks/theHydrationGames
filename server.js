@@ -15,11 +15,15 @@ var proxy = httpProxy.createProxyServer({
   changeOrigin: true
 });
 var app = express();
+
 app.set("view engine","ejs");
 
-app.use(express.static(publicPath));
 
-app.get("/hello", function(req,res){
+// app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine","ejs");
+
+
+app.get("/", function(req,res){
   var link="https://data.smcgov.org/resource/vedt-m26i.json";
   request(link, function(error, response, body){
     if (error) { throw error; }
@@ -28,10 +32,16 @@ app.get("/hello", function(req,res){
       dat["gallonsPerCapita"] = (dat["water_use_ccf"]*748.052)/(dat["service_population"]);
     });
     console.log(data);
-    res.send(data);
+    // res.send(data);
+    res.render("index",{data: data});
   });
   // res.render("landing")
 });
+
+app.get("/leaderboard", function(req,res){
+  res.render("leaderboard");
+});
+
 
 app.get("/register", function(req,res){
   res.render("register");
@@ -46,7 +56,7 @@ app.post("/register", function(req,res){
     }
     else{
       passport.authenticate("local")(req,res, function(){
-        res.redirect("/hello");
+        res.redirect("/home");
       });
     }
   });
@@ -58,13 +68,14 @@ app.get("/login", function(req,res){
 });
 
 app.post("/login", passport.authenticate("local",{
-  successRedirect: "/hello",
+  successRedirect: "/home",
   failureRedirect: "/login"
 }), function(req,res){
 });
 
 app.get("/logout", function(req,res){
   req.logout();
+
   res.redirect("/hello");
 });
 
@@ -88,6 +99,23 @@ if (!isProduction) {
     });
   });
 }
+=======
+  res.redirect("/home");
+})
+
+// If you only want this for development, you would of course
+// put it in the "if" block below
+
+// if (!isProduction) {
+//   var bundle = require('./server/compiler.js');
+//   bundle();
+//   app.all('/build/*', function (req, res) {
+//     proxy.web(req, res, {
+//       target: 'http://localhost:8080'
+//     });
+//   });
+// }
+>>>>>>> b8eeafb9516a4ee9caf79167d90945f3f401ae36
 
 proxy.on('error', function(e) {
   console.log('Could not connect to proxy, please try again...');

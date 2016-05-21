@@ -12,5 +12,7 @@
 }
 
 li {
+  padding: 30px;
+  text-align: left;
   list-style-type: none;
 }
