@@ -17,7 +17,9 @@ var proxy = httpProxy.createProxyServer({
 var app = express();
 // app.set("view engine","html");
 
-app.use(express.static(publicPath));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.set("view engine","ejs");
+
 
 app.get("/", function(req,res){
   var link="https://data.smcgov.org/resource/vedt-m26i.json";
